@@ -180,10 +180,27 @@ def kitchen(request: Request):
     db = SessionLocal()
     orders = db.query(Order).all()
 
+    tables = {}
+
+    for order in orders:
+        table_id = order.table_id
+
+        if table_id not in tables:
+            tables[table_id] = {
+                "customer": order.customer_name,
+                "items": [],
+                "status": order.status
+            }
+
+        tables[table_id]["items"].append(order.item)
+
     return templates.TemplateResponse(
-        "kitchen.html",
-        {"request": request, "orders": orders}
-    )
+    "kitchen.html",
+    {
+        "request": request,
+        "tables": tables
+    }
+)
 
 # -------------------------------
 # STAFF DASHBOARD

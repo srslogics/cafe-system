@@ -22,12 +22,13 @@ color:white;
 padding:18px;
 text-align:center;
 font-size:22px;
+font-weight:500;
 }
 
 .container{
 display:grid;
-grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-gap:15px;
+grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+gap:18px;
 padding:20px;
 }
 
@@ -39,25 +40,31 @@ box-shadow:0 5px 15px rgba(0,0,0,0.08);
 }
 
 .table{
-font-size:20px;
+font-size:22px;
 font-weight:bold;
 margin-bottom:8px;
+color:#333;
 }
 
 .customer{
 color:#777;
 font-size:14px;
-margin-bottom:10px;
+margin-bottom:12px;
+}
+
+.items{
+margin-top:10px;
 }
 
 .item{
 font-size:16px;
-margin-bottom:8px;
+margin-bottom:6px;
 }
 
 .status{
-margin-top:10px;
+margin-top:12px;
 font-weight:bold;
+font-size:15px;
 }
 
 .new{
@@ -72,6 +79,37 @@ color:#f0ad4e;
 color:#28a745;
 }
 
+.actions{
+margin-top:12px;
+display:flex;
+gap:8px;
+}
+
+button{
+border:none;
+padding:8px 12px;
+border-radius:6px;
+cursor:pointer;
+font-size:14px;
+}
+
+.prep-btn{
+background:#f0ad4e;
+color:white;
+}
+
+.ready-btn{
+background:#28a745;
+color:white;
+}
+
+.empty{
+text-align:center;
+font-size:18px;
+color:#777;
+margin-top:50px;
+}
+
 </style>
 
 </head>
@@ -84,29 +122,78 @@ Kitchen Orders
 
 <div class="container">
 
-{% for order in orders %}
+{% if tables %}
+
+{% for table_id, table in tables.items() %}
 
 <div class="order-card">
 
 <div class="table">
-Table {{order.table_id}}
+Table {{table_id}}
 </div>
 
 <div class="customer">
-Customer: {{order.customer_name}}
+Customer: {{table.customer}}
 </div>
+
+<div class="items">
+
+{% for item in table.items %}
 
 <div class="item">
-{{order.item}}
+• {{item}}
 </div>
 
-<div class="status new">
-Status: {{order.status}}
+{% endfor %}
+
+</div>
+
+<div class="status 
+{% if table.status == 'NEW' %}new
+{% elif table.status == 'PREPARING' %}preparing
+{% elif table.status == 'READY' %}ready
+{% endif %}
+">
+
+Status: {{table.status}}
+
+</div>
+
+<div class="actions">
+
+<form action="/update-status/{{table_id}}" method="post">
+
+<input type="hidden" name="status" value="PREPARING">
+
+<button class="prep-btn">
+Preparing
+</button>
+
+</form>
+
+<form action="/update-status/{{table_id}}" method="post">
+
+<input type="hidden" name="status" value="READY">
+
+<button class="ready-btn">
+Ready
+</button>
+
+</form>
+
 </div>
 
 </div>
 
 {% endfor %}
+
+{% else %}
+
+<div class="empty">
+No orders yet
+</div>
+
+{% endif %}
 
 </div>
 
