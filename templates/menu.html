@@ -129,6 +129,16 @@ font-weight:600;
 cursor:pointer;
 }
 
+.staff-message{
+background:#d4edda;
+color:#155724;
+padding:10px;
+margin:10px auto;
+max-width:500px;
+text-align:center;
+border-radius:8px;
+font-size:14px;
+}
 </style>
 
 </head>
@@ -143,6 +153,13 @@ Three Beans
 Table {{table_id}} • Welcome {{name}}
 </div>
 
+{% if staff_called %}
+
+<div class="staff-message">
+Staff has been notified 👨‍🍳
+</div>
+
+{% endif %}
 <div class="container">
 
 <!-- Cappuccino -->

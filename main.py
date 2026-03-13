@@ -48,7 +48,13 @@ def start_order(
 # -------------------------------
 
 @app.get("/menu/{table_id}", response_class=HTMLResponse)
-def menu(request: Request, table_id: int, name: str = "", phone: str = ""):
+def menu(
+    request: Request,
+    table_id: int,
+    name: str = "",
+    phone: str = "",
+    staff_called: int = 0
+):
 
     return templates.TemplateResponse(
         "menu.html",
@@ -56,7 +62,8 @@ def menu(request: Request, table_id: int, name: str = "", phone: str = ""):
             "request": request,
             "table_id": table_id,
             "name": name,
-            "phone": phone
+            "phone": phone,
+            "staff_called": staff_called
         }
     )
 
@@ -174,11 +181,18 @@ def order_confirmed(request: Request, table:int, name:str, phone:str):
 # -------------------------------
 
 @app.post("/call-staff")
-def call_staff(table_id: int = Form(...)):
+def call_staff(
+    table_id: int = Form(...),
+    name: str = Form(...),
+    phone: str = Form(...)
+):
 
     print(f"Table {table_id} needs staff")
 
-    return {"message": "Staff notified"}
+    return RedirectResponse(
+        f"/menu/{table_id}?name={name}&phone={phone}&staff_called=1",
+        status_code=303
+    )
 
 # -------------------------------
 # KITCHEN DASHBOARD
