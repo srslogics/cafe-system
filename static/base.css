@@ -1,0 +1,99 @@
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    }
+    
+    body{
+    font-family:"Segoe UI", Arial, sans-serif;
+    background:linear-gradient(135deg,#f8f5f1,#efe7de);
+    min-height:100vh;
+    padding:15px;
+    }
+    
+    /* page container */
+    
+    .container{
+    
+    width:100%;
+    max-width:420px;
+    
+    margin:auto;
+    
+    background:white;
+    
+    padding:25px;
+    
+    border-radius:16px;
+    
+    box-shadow:
+    0 20px 50px rgba(0,0,0,0.1);
+    
+    }
+    
+    /* headings */
+    
+    h1,h2,h3{
+    color:#3b2d25;
+    }
+    
+    /* buttons */
+    
+    button{
+    
+    width:100%;
+    
+    padding:15px;
+    
+    border:none;
+    
+    border-radius:10px;
+    
+    background:linear-gradient(135deg,#6f4e37,#4a2f20);
+    
+    color:white;
+    
+    font-size:16px;
+    
+    font-weight:600;
+    
+    cursor:pointer;
+    
+    margin-top:15px;
+    
+    }
+    
+    /* inputs */
+    
+    input, textarea{
+    
+    width:100%;
+    
+    padding:12px;
+    
+    border-radius:8px;
+    
+    border:1px solid #ddd;
+    
+    margin-top:8px;
+    
+    }
+    
+    /* mobile improvements */
+    
+    @media (max-width:480px){
+    
+    .container{
+    padding:22px;
+    }
+    
+    button{
+    padding:16px;
+    font-size:16px;
+    }
+    
+    input,textarea{
+    font-size:16px;
+    }
+    
+    }
