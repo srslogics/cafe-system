@@ -10,9 +10,13 @@
     
     display:flex;
     justify-content:center;
-    align-items:center;
+    align-items:flex-start;
     
-    height:100vh;
+    min-height:100vh;
+    
+    padding-top:60px;
+    padding-left:16px;
+    padding-right:16px;
     }
     
     /* card */
@@ -24,7 +28,7 @@
     
     background:white;
     
-    padding:40px;
+    padding:36px;
     
     border-radius:18px;
     
@@ -38,7 +42,31 @@
     
     }
     
-    /* icon */
+    /* success icon */
+    
+    .success-check{
+    
+    width:60px;
+    height:60px;
+    
+    margin:0 auto 15px auto;
+    
+    border-radius:50%;
+    
+    background:#6f4e37;
+    color:white;
+    
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    
+    font-size:28px;
+    
+    animation:pop 0.4s ease;
+    
+    }
+    
+    /* coffee icon */
     
     .icon{
     font-size:42px;
@@ -117,37 +145,36 @@
     }
     
     }
-    .success-check{
-
-        width:60px;
-        height:60px;
-        
-        margin:0 auto 15px auto;
-        
-        border-radius:50%;
-        
-        background:#6f4e37;
-        color:white;
-        
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        
-        font-size:28px;
-        
-        animation:pop 0.4s ease;
-        }
-        
-        @keyframes pop{
-        
-        0%{
-        transform:scale(0.3);
-        opacity:0;
-        }
-        
-        100%{
-        transform:scale(1);
-        opacity:1;
-        }
-        
-        }
+    
+    @keyframes pop{
+    
+    0%{
+    transform:scale(0.3);
+    opacity:0;
+    }
+    
+    100%{
+    transform:scale(1);
+    opacity:1;
+    }
+    
+    }
+    
+    /* mobile adjustments */
+    
+    @media(max-width:480px){
+    
+    .container{
+    padding:30px;
+    }
+    
+    h1{
+    font-size:22px;
+    }
+    
+    button{
+    font-size:16px;
+    padding:15px;
+    }
+    
+    }

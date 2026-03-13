@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Three Beans Menu</title>
-<link rel="stylesheet" href="/static/base.css">
+
 <link rel="stylesheet" href="/static/menu.css">
 
 </head>
@@ -61,29 +61,33 @@ Staff has been notified 👨‍🍳
 <h3 id="coffee" class="category-title">Coffee</h3>
 
 <div class="menu-card">
-<div>
+
+<div class="item-info">
 <div class="item-name">☕ Cappuccino</div>
 <div class="price">₹180</div>
 </div>
 
 <div class="qty-box">
-<button onclick="decrease('Cappuccino')">-</button>
+<button onclick="decrease('Cappuccino')">−</button>
 <span class="qty" id="qty-Cappuccino">0</span>
 <button onclick="increase('Cappuccino')">+</button>
 </div>
+
 </div>
 
 <div class="menu-card">
-<div>
+
+<div class="item-info">
 <div class="item-name">☕ Latte</div>
 <div class="price">₹200</div>
 </div>
 
 <div class="qty-box">
-<button onclick="decrease('Latte')">-</button>
+<button onclick="decrease('Latte')">−</button>
 <span class="qty" id="qty-Latte">0</span>
 <button onclick="increase('Latte')">+</button>
 </div>
+
 </div>
 
 <!-- FOOD -->
@@ -91,29 +95,33 @@ Staff has been notified 👨‍🍳
 <h3 id="food" class="category-title">Food</h3>
 
 <div class="menu-card">
-<div>
+
+<div class="item-info">
 <div class="item-name">🥪 Paneer Sandwich</div>
 <div class="price">₹250</div>
 </div>
 
 <div class="qty-box">
-<button onclick="decrease('Paneer Sandwich')">-</button>
+<button onclick="decrease('Paneer Sandwich')">−</button>
 <span class="qty" id="qty-Paneer Sandwich">0</span>
 <button onclick="increase('Paneer Sandwich')">+</button>
 </div>
+
 </div>
 
 <div class="menu-card">
-<div>
+
+<div class="item-info">
 <div class="item-name">🍝 Alfredo Pasta</div>
 <div class="price">₹320</div>
 </div>
 
 <div class="qty-box">
-<button onclick="decrease('Alfredo Pasta')">-</button>
+<button onclick="decrease('Alfredo Pasta')">−</button>
 <span class="qty" id="qty-Alfredo Pasta">0</span>
 <button onclick="increase('Alfredo Pasta')">+</button>
 </div>
+
 </div>
 
 <!-- DESSERT -->
@@ -121,16 +129,18 @@ Staff has been notified 👨‍🍳
 <h3 id="dessert" class="category-title">Dessert</h3>
 
 <div class="menu-card">
-<div>
+
+<div class="item-info">
 <div class="item-name">🍰 Blueberry Cheesecake</div>
 <div class="price">₹280</div>
 </div>
 
 <div class="qty-box">
-<button onclick="decrease('Blueberry Cheesecake')">-</button>
+<button onclick="decrease('Blueberry Cheesecake')">−</button>
 <span class="qty" id="qty-Blueberry Cheesecake">0</span>
 <button onclick="increase('Blueberry Cheesecake')">+</button>
 </div>
+
 </div>
 
 <!-- STAFF CALL -->
@@ -154,9 +164,11 @@ Call Staff
 <!-- BILL -->
 
 <div class="bill">
+
 <a href="/bill-customer?table={{table_id}}&name={{name}}&phone={{phone}}">
 <button>Generate Bill</button>
 </a>
+
 </div>
 
 </div>
@@ -193,7 +205,7 @@ cart[item] = 0
 
 cart[item]++
 
-updateUI(item)
+updateUI()
 
 sendToServer(item)
 
@@ -203,19 +215,19 @@ function decrease(item){
 
 if(cart[item] && cart[item] > 0){
 cart[item]--
-updateUI(item)
+updateUI()
 }
 
 }
 
-function updateUI(item){
-
-document.getElementById("qty-"+item).innerText = cart[item]
+function updateUI(){
 
 let totalItems = 0
 let totalPrice = 0
 
 for(let i in cart){
+
+document.getElementById("qty-"+i).innerText = cart[i]
 
 totalItems += cart[i]
 totalPrice += cart[i] * prices[i]

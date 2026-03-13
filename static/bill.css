@@ -5,13 +5,18 @@
     body{
     margin:0;
     font-family:"Segoe UI", Arial, sans-serif;
+    
     background:linear-gradient(135deg,#f8f5f1,#efe7de);
     
     display:flex;
     justify-content:center;
-    align-items:center;
+    align-items:flex-start;
     
     min-height:100vh;
+    
+    padding-top:60px;
+    padding-left:16px;
+    padding-right:16px;
     }
     
     /* Card */
@@ -23,7 +28,7 @@
     
     background:white;
     
-    padding:30px;
+    padding:28px;
     
     border-radius:18px;
     
@@ -97,7 +102,7 @@
     
     width:100%;
     
-    padding:14px;
+    padding:15px;
     
     margin-top:25px;
     
@@ -109,7 +114,7 @@
     
     border-radius:10px;
     
-    font-size:15px;
+    font-size:16px;
     
     font-weight:600;
     
@@ -127,4 +132,27 @@
     
     button:active{
     transform:scale(0.98);
+    }
+    
+    /* Mobile adjustments */
+    
+    @media(max-width:480px){
+    
+    .container{
+    padding:24px;
+    }
+    
+    .item{
+    font-size:14px;
+    }
+    
+    .total{
+    font-size:16px;
+    }
+    
+    button{
+    font-size:16px;
+    padding:16px;
+    }
+    
     }

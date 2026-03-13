@@ -34,7 +34,7 @@
     /* MAIN CONTAINER */
     
     .container{
-    max-width:540px;
+    max-width:420px;
     margin:auto;
     padding:20px;
     padding-bottom:110px;
@@ -43,29 +43,35 @@
     /* MENU CARD */
     
     .menu-card{
-    background:white;
-    padding:20px;
-    border-radius:16px;
-    margin-bottom:16px;
     display:flex;
     justify-content:space-between;
     align-items:center;
     
-    box-shadow:
-    0 20px 45px rgba(0,0,0,0.08),
-    0 6px 12px rgba(0,0,0,0.04);
+    background:white;
     
-    transition:all 0.25s ease;
+    padding:18px;
+    
+    border-radius:14px;
+    
+    margin-bottom:14px;
+    
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    
+    transition:all 0.2s ease;
     }
     
     .menu-card:hover{
-    transform:translateY(-4px);
-    box-shadow:
-    0 30px 55px rgba(0,0,0,0.12),
-    0 8px 15px rgba(0,0,0,0.06);
+    transform:translateY(-3px);
+    box-shadow:0 16px 35px rgba(0,0,0,0.12);
     }
     
-    /* ITEM */
+    /* ITEM INFO */
+    
+    .item-info{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    }
     
     .item-name{
     font-size:17px;
@@ -76,7 +82,7 @@
     .price{
     color:#8d847c;
     font-size:14px;
-    margin-top:6px;
+    margin-top:4px;
     }
     
     /* QUANTITY CONTROL */
@@ -84,34 +90,53 @@
     .qty-box{
     display:flex;
     align-items:center;
-    gap:10px;
-    background:#f7f3ee;
-    padding:6px;
+    gap:8px;
+    
+    background:#f4eee8;
+    
+    padding:6px 8px;
+    
     border-radius:10px;
     }
     
+    /* BUTTONS */
+    
     .qty-box button{
-    width:34px;
-    height:34px;
+    width:36px;
+    height:36px;
+    
     border:none;
+    
     background:#6f4e37;
     color:white;
+    
     border-radius:8px;
+    
     font-size:18px;
+    
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    
     cursor:pointer;
+    
     transition:all 0.2s ease;
     }
     
     .qty-box button:hover{
     background:#4a2f20;
-    transform:scale(1.08);
+    transform:scale(1.05);
     }
     
+    /* NUMBER */
+    
     .qty{
+    min-width:20px;
+    text-align:center;
+    
     font-size:16px;
     font-weight:600;
-    width:24px;
-    text-align:center;
+    
     color:#3b2d25;
     }
     
@@ -126,17 +151,17 @@
     background:linear-gradient(135deg,#6f4e37,#4a2f20);
     border:none;
     color:white;
-    padding:13px 26px;
+    padding:14px 26px;
     border-radius:12px;
     font-size:15px;
     font-weight:600;
     cursor:pointer;
-    box-shadow:0 10px 25px rgba(255,107,53,0.4);
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
     transition:0.2s;
     }
     
     .staff button:hover{
-    transform:translateY(-3px);
+    transform:translateY(-2px);
     }
     
     /* BILL BUTTON */
@@ -150,17 +175,17 @@
     background:#3b2d25;
     border:none;
     color:white;
-    padding:13px 26px;
+    padding:14px 26px;
     border-radius:12px;
     font-size:15px;
     font-weight:600;
     cursor:pointer;
-    box-shadow:0 10px 25px rgba(45,143,111,0.35);
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
     transition:0.2s;
     }
     
     .bill button:hover{
-    transform:translateY(-3px);
+    transform:translateY(-2px);
     }
     
     /* CART BAR */
@@ -211,6 +236,80 @@
     box-shadow:0 6px 18px rgba(0,0,0,0.05);
     }
     
+    /* ORDER SUMMARY */
+    
+    .order-summary{
+    max-width:520px;
+    margin:auto;
+    
+    background:white;
+    
+    padding:12px 18px;
+    
+    border-radius:12px;
+    
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    
+    font-size:14px;
+    font-weight:500;
+    
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    
+    margin-bottom:14px;
+    }
+    
+    .table-label{
+    color:#6f4e37;
+    font-weight:600;
+    }
+    
+    .divider{
+    margin:0 6px;
+    color:#aaa;
+    }
+    
+    /* CATEGORY NAVIGATION */
+    
+    .menu-categories{
+    display:flex;
+    gap:10px;
+    
+    overflow-x:auto;
+    
+    padding:10px 0 15px 0;
+    
+    max-width:520px;
+    margin:auto;
+    }
+    
+    .menu-categories a{
+    text-decoration:none;
+    
+    background:white;
+    
+    padding:8px 16px;
+    
+    border-radius:20px;
+    
+    font-size:13px;
+    
+    color:#6f4e37;
+    
+    border:1px solid #eee;
+    
+    white-space:nowrap;
+    
+    box-shadow:0 4px 10px rgba(0,0,0,0.05);
+    }
+    
+    .category-title{
+    margin:20px 0 10px 0;
+    color:#3b2d25;
+    font-size:18px;
+    }
+    
     /* MOBILE */
     
     @media(max-width:480px){
@@ -220,87 +319,17 @@
     padding:18px;
     }
     
-    .menu-card{
+    .container{
     padding:18px;
     }
     
+    .menu-card{
+    padding:16px;
     }
-    .order-summary{
-
-        max-width:520px;
-        margin:auto;
-        
-        background:white;
-        
-        padding:12px 18px;
-        
-        border-radius:12px;
-        
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
-        
-        font-size:14px;
-        font-weight:500;
-        
-        box-shadow:
-        0 8px 20px rgba(0,0,0,0.08);
-        
-        margin-bottom:14px;
-        
-        }
-        
-        .table-label{
-        color:#6f4e37;
-        font-weight:600;
-        }
-        
-        .divider{
-        margin:0 6px;
-        color:#aaa;
-        }
-        .menu-categories{
-
-            display:flex;
-            gap:10px;
-            
-            overflow-x:auto;
-            
-            padding:10px 0 15px 0;
-            
-            max-width:520px;
-            margin:auto;
-            
-            }
-            
-            .menu-categories a{
-            
-            text-decoration:none;
-            
-            background:white;
-            
-            padding:8px 16px;
-            
-            border-radius:20px;
-            
-            font-size:13px;
-            
-            color:#6f4e37;
-            
-            border:1px solid #eee;
-            
-            white-space:nowrap;
-            
-            box-shadow:0 4px 10px rgba(0,0,0,0.05);
-            
-            }
-            
-            .category-title{
-            
-            margin:20px 0 10px 0;
-            
-            color:#3b2d25;
-            
-            font-size:18px;
-            
-            }
+    
+    .qty-box button{
+    width:38px;
+    height:38px;
+    }
+    
+    }

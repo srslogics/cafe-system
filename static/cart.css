@@ -29,10 +29,10 @@
     /* container */
     
     .container{
-    max-width:520px;
+    max-width:420px;   /* better for mobile */
     margin:auto;
     padding:18px;
-    padding-bottom:110px;
+    padding-bottom:130px;
     }
     
     /* item card */
@@ -109,6 +109,9 @@
     padding:18px;
     
     box-shadow:0 -5px 20px rgba(0,0,0,0.1);
+    
+    max-width:420px;
+    margin:auto;
     }
     
     /* buttons */
@@ -145,4 +148,28 @@
     color:#7c746c;
     margin-top:60px;
     font-size:16px;
+    }
+    
+    /* mobile adjustments */
+    
+    @media (max-width:480px){
+    
+    .header{
+    font-size:20px;
+    padding:16px;
+    }
+    
+    .container{
+    padding:16px;
+    }
+    
+    .card{
+    padding:16px;
+    }
+    
+    button{
+    font-size:16px;
+    padding:16px;
+    }
+    
     }
