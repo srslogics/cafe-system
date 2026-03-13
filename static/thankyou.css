@@ -1,0 +1,153 @@
+*{
+    box-sizing:border-box;
+    }
+    
+    body{
+    margin:0;
+    font-family:"Segoe UI", Arial, sans-serif;
+    
+    background:linear-gradient(135deg,#f8f5f1,#efe7de);
+    
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    
+    height:100vh;
+    }
+    
+    /* card */
+    
+    .container{
+    
+    max-width:420px;
+    width:100%;
+    
+    background:white;
+    
+    padding:40px;
+    
+    border-radius:18px;
+    
+    text-align:center;
+    
+    box-shadow:
+    0 25px 60px rgba(0,0,0,0.12),
+    0 8px 20px rgba(0,0,0,0.05);
+    
+    animation:fadeIn 0.5s ease;
+    
+    }
+    
+    /* icon */
+    
+    .icon{
+    font-size:42px;
+    margin-bottom:10px;
+    }
+    
+    /* heading */
+    
+    h1{
+    margin:0;
+    color:#3b2d25;
+    font-weight:600;
+    }
+    
+    /* message */
+    
+    .message{
+    color:#6b625c;
+    font-size:15px;
+    margin-top:10px;
+    }
+    
+    .sub{
+    color:#9a9188;
+    font-size:14px;
+    margin-top:6px;
+    margin-bottom:25px;
+    }
+    
+    /* button */
+    
+    button{
+    
+    padding:14px 26px;
+    
+    background:linear-gradient(135deg,#6f4e37,#4a2f20);
+    
+    color:white;
+    
+    border:none;
+    
+    border-radius:10px;
+    
+    font-size:15px;
+    
+    font-weight:600;
+    
+    cursor:pointer;
+    
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+    
+    transition:0.2s;
+    
+    }
+    
+    button:hover{
+    transform:translateY(-2px);
+    }
+    
+    button:active{
+    transform:scale(0.98);
+    }
+    
+    /* animation */
+    
+    @keyframes fadeIn{
+    
+    from{
+    opacity:0;
+    transform:translateY(10px);
+    }
+    
+    to{
+    opacity:1;
+    transform:translateY(0);
+    }
+    
+    }
+    .success-check{
+
+        width:60px;
+        height:60px;
+        
+        margin:0 auto 15px auto;
+        
+        border-radius:50%;
+        
+        background:#6f4e37;
+        color:white;
+        
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        
+        font-size:28px;
+        
+        animation:pop 0.4s ease;
+        }
+        
+        @keyframes pop{
+        
+        0%{
+        transform:scale(0.3);
+        opacity:0;
+        }
+        
+        100%{
+        transform:scale(1);
+        opacity:1;
+        }
+        
+        }

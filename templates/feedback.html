@@ -5,47 +5,7 @@
 
 <title>Rate Your Experience</title>
 
-<style>
-
-body{
-font-family:Arial;
-background:#f3f1ed;
-}
-
-.container{
-max-width:450px;
-margin:auto;
-background:white;
-padding:25px;
-margin-top:40px;
-border-radius:10px;
-text-align:center;
-}
-
-.stars{
-font-size:28px;
-margin:15px 0;
-}
-
-textarea{
-width:100%;
-padding:10px;
-border-radius:6px;
-border:1px solid #ccc;
-margin-top:10px;
-}
-
-button{
-width:100%;
-padding:14px;
-background:#6f4e37;
-color:white;
-border:none;
-border-radius:8px;
-margin-top:15px;
-}
-
-</style>
+<link rel="stylesheet" href="/static/feedback.css">
 
 </head>
 
@@ -53,21 +13,38 @@ margin-top:15px;
 
 <div class="container">
 
+<div class="icon">
+☕
+</div>
+
 <h2>Rate Your Experience</h2>
+
+<p class="subtitle">
+How was your visit at Three Beans?
+</p>
 
 <form action="/submit-feedback" method="post">
 
-<div class="stars">
+    <div class="stars">
 
-<label><input type="radio" name="rating" value="1">⭐</label>
-<label><input type="radio" name="rating" value="2">⭐⭐</label>
-<label><input type="radio" name="rating" value="3">⭐⭐⭐</label>
-<label><input type="radio" name="rating" value="4">⭐⭐⭐⭐</label>
-<label><input type="radio" name="rating" value="5">⭐⭐⭐⭐⭐</label>
+        <input type="radio" name="rating" id="star5" value="5">
+        <label for="star5">★</label>
+        
+        <input type="radio" name="rating" id="star4" value="4">
+        <label for="star4">★</label>
+        
+        <input type="radio" name="rating" id="star3" value="3">
+        <label for="star3">★</label>
+        
+        <input type="radio" name="rating" id="star2" value="2">
+        <label for="star2">★</label>
+        
+        <input type="radio" name="rating" id="star1" value="1">
+        <label for="star1">★</label>
+        
+        </div>
 
-</div>
-
-<textarea name="comment" placeholder="Leave a comment"></textarea>
+<textarea name="comment" placeholder="Tell us what you liked or what we can improve..."></textarea>
 
 <button>
 Submit Feedback

@@ -8,138 +8,7 @@
 
 <title>Three Beans Menu</title>
 
-<style>
-
-body{
-margin:0;
-font-family:"Segoe UI", Arial, sans-serif;
-background:#f3f1ed;
-}
-
-.header{
-background:#6f4e37;
-color:white;
-padding:18px;
-text-align:center;
-font-size:22px;
-font-weight:500;
-}
-
-.subheader{
-text-align:center;
-font-size:14px;
-color:#555;
-margin:8px 0 15px 0;
-}
-
-.container{
-max-width:520px;
-margin:auto;
-padding:15px;
-padding-bottom:90px;
-}
-
-.menu-card{
-background:white;
-padding:16px;
-border-radius:10px;
-margin-bottom:12px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-box-shadow:0 3px 10px rgba(0,0,0,0.05);
-}
-
-.item-name{
-font-size:16px;
-font-weight:500;
-color:#333;
-}
-
-.price{
-color:#777;
-font-size:14px;
-margin-top:3px;
-}
-
-.qty-box{
-display:flex;
-align-items:center;
-gap:8px;
-}
-
-.qty-box button{
-width:30px;
-height:30px;
-border:none;
-background:#6f4e37;
-color:white;
-border-radius:6px;
-font-size:16px;
-cursor:pointer;
-}
-
-.qty{
-font-size:15px;
-width:20px;
-text-align:center;
-}
-
-.staff{
-margin-top:20px;
-text-align:center;
-}
-
-.staff button{
-background:#ff6b35;
-padding:10px 18px;
-}
-
-.bill{
-margin-top:10px;
-text-align:center;
-}
-
-.bill button{
-background:#2d8f6f;
-padding:10px 18px;
-}
-
-.cart-bar{
-position:fixed;
-bottom:0;
-left:0;
-right:0;
-background:#2d8f6f;
-color:white;
-padding:14px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-font-size:16px;
-}
-
-.cart-bar button{
-background:white;
-color:#2d8f6f;
-border:none;
-padding:8px 16px;
-border-radius:6px;
-font-weight:600;
-cursor:pointer;
-}
-
-.staff-message{
-background:#d4edda;
-color:#155724;
-padding:10px;
-margin:10px auto;
-max-width:500px;
-text-align:center;
-border-radius:8px;
-font-size:14px;
-}
-</style>
+<link rel="stylesheet" href="/static/menu.css">
 
 </head>
 
@@ -153,6 +22,30 @@ Three Beans
 Table {{table_id}} • Welcome {{name}}
 </div>
 
+<div class="order-summary">
+
+<div>
+<span class="table-label">Table {{table_id}}</span>
+</div>
+
+<div>
+<span id="item-count">0 items</span>
+<span class="divider">•</span>
+<span id="total-price">₹0</span>
+</div>
+
+</div>
+
+<!-- CATEGORY NAVIGATION -->
+
+<div class="menu-categories">
+
+<a href="#coffee">Coffee</a>
+<a href="#food">Food</a>
+<a href="#dessert">Dessert</a>
+
+</div>
+
 {% if staff_called %}
 
 <div class="staff-message">
@@ -160,9 +53,13 @@ Staff has been notified 👨‍🍳
 </div>
 
 {% endif %}
+
 <div class="container">
 
-<!-- Cappuccino -->
+<!-- COFFEE -->
+
+<h3 id="coffee" class="category-title">Coffee</h3>
+
 <div class="menu-card">
 <div>
 <div class="item-name">☕ Cappuccino</div>
@@ -176,7 +73,6 @@ Staff has been notified 👨‍🍳
 </div>
 </div>
 
-<!-- Latte -->
 <div class="menu-card">
 <div>
 <div class="item-name">☕ Latte</div>
@@ -190,7 +86,10 @@ Staff has been notified 👨‍🍳
 </div>
 </div>
 
-<!-- Sandwich -->
+<!-- FOOD -->
+
+<h3 id="food" class="category-title">Food</h3>
+
 <div class="menu-card">
 <div>
 <div class="item-name">🥪 Paneer Sandwich</div>
@@ -204,7 +103,6 @@ Staff has been notified 👨‍🍳
 </div>
 </div>
 
-<!-- Pasta -->
 <div class="menu-card">
 <div>
 <div class="item-name">🍝 Alfredo Pasta</div>
@@ -218,7 +116,10 @@ Staff has been notified 👨‍🍳
 </div>
 </div>
 
-<!-- Cheesecake -->
+<!-- DESSERT -->
+
+<h3 id="dessert" class="category-title">Dessert</h3>
+
 <div class="menu-card">
 <div>
 <div class="item-name">🍰 Blueberry Cheesecake</div>
@@ -232,21 +133,25 @@ Staff has been notified 👨‍🍳
 </div>
 </div>
 
-    <div class="staff">
+<!-- STAFF CALL -->
 
-    <form action="/call-staff" method="post">
-    
-    <input type="hidden" name="table_id" value="{{table_id}}">
-    <input type="hidden" name="name" value="{{name}}">
-    <input type="hidden" name="phone" value="{{phone}}">
-    
-    <button>
-    Call Staff
-    </button>
-    
-    </form>
-    
-    </div>
+<div class="staff">
+
+<form action="/call-staff" method="post">
+
+<input type="hidden" name="table_id" value="{{table_id}}">
+<input type="hidden" name="name" value="{{name}}">
+<input type="hidden" name="phone" value="{{phone}}">
+
+<button>
+Call Staff
+</button>
+
+</form>
+
+</div>
+
+<!-- BILL -->
 
 <div class="bill">
 <a href="/bill-customer?table={{table_id}}&name={{name}}&phone={{phone}}">
@@ -257,14 +162,26 @@ Staff has been notified 👨‍🍳
 </div>
 
 <div class="cart-bar">
+
 <span id="cart-count">0 items</span>
 
 <a href="/cart?name={{name}}&phone={{phone}}&table={{table_id}}">
 <button>View Cart</button>
 </a>
+
 </div>
 
 <script>
+
+let prices = {
+
+"Cappuccino":180,
+"Latte":200,
+"Paneer Sandwich":250,
+"Alfredo Pasta":320,
+"Blueberry Cheesecake":280
+
+}
 
 let cart = {}
 
@@ -295,13 +212,21 @@ function updateUI(item){
 
 document.getElementById("qty-"+item).innerText = cart[item]
 
-let total = 0
+let totalItems = 0
+let totalPrice = 0
 
 for(let i in cart){
-total += cart[i]
+
+totalItems += cart[i]
+totalPrice += cart[i] * prices[i]
+
 }
 
-document.getElementById("cart-count").innerText = total + " items"
+document.getElementById("cart-count").innerText = totalItems + " items"
+
+document.getElementById("item-count").innerText = totalItems + " items"
+
+document.getElementById("total-price").innerText = "₹" + totalPrice
 
 }
 
@@ -318,18 +243,20 @@ body:`table_id={{table_id}}&customer_name={{name}}&customer_phone={{phone}}&item
 }
 
 </script>
+
 <script>
 
-    setTimeout(() => {
-    
-    let msg = document.querySelector(".staff-message")
-    
-    if(msg){
-    msg.style.display = "none"
-    }
-    
-    },4000)
-    
-    </script>
+setTimeout(() => {
+
+let msg = document.querySelector(".staff-message")
+
+if(msg){
+msg.style.display = "none"
+}
+
+},4000)
+
+</script>
+
 </body>
 </html>

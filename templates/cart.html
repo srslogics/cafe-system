@@ -8,110 +8,7 @@
 
 <title>Your Order | Three Beans</title>
 
-<style>
-
-body{
-margin:0;
-font-family:"Segoe UI", Arial, sans-serif;
-background:#f3f1ed;
-}
-
-.header{
-background:#6f4e37;
-color:white;
-padding:18px;
-text-align:center;
-font-size:22px;
-font-weight:500;
-}
-
-.subheader{
-text-align:center;
-color:#555;
-margin:8px 0 15px 0;
-font-size:14px;
-}
-
-.container{
-max-width:520px;
-margin:auto;
-padding:15px;
-padding-bottom:90px;
-}
-
-.card{
-background:white;
-padding:16px;
-border-radius:10px;
-margin-bottom:10px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-box-shadow:0 3px 10px rgba(0,0,0,0.05);
-}
-
-.item-name{
-font-size:16px;
-color:#333;
-}
-
-.price{
-color:#666;
-font-size:14px;
-}
-
-.total{
-background:white;
-padding:16px;
-border-radius:10px;
-margin-top:10px;
-font-weight:600;
-display:flex;
-justify-content:space-between;
-box-shadow:0 3px 10px rgba(0,0,0,0.05);
-}
-
-.buttons{
-position:fixed;
-bottom:0;
-left:0;
-right:0;
-background:#ffffff;
-padding:15px;
-box-shadow:0 -3px 10px rgba(0,0,0,0.05);
-}
-
-button{
-width:100%;
-padding:14px;
-border:none;
-border-radius:8px;
-font-size:16px;
-cursor:pointer;
-margin-top:10px;
-}
-
-.order-btn{
-background:#6f4e37;
-color:white;
-}
-
-.order-btn:hover{
-background:#5c3f2c;
-}
-
-.back-btn{
-background:#ccc;
-}
-
-.empty{
-text-align:center;
-color:#777;
-margin-top:40px;
-font-size:16px;
-}
-
-</style>
+<link rel="stylesheet" href="/static/cart.css">
 
 </head>
 
@@ -133,8 +30,16 @@ Table {{table}} • {{name}}
 
 <div class="card">
 
+<div class="left">
+
 <div class="item-name">
 {{item.item}}
+</div>
+
+<div class="qty">
+Qty: {{item.qty}}
+</div>
+
 </div>
 
 <div class="price">
