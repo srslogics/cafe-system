@@ -232,12 +232,21 @@ Staff has been notified 👨‍🍳
 </div>
 </div>
 
-<div class="staff">
-<form action="/call-staff" method="post">
-<input type="hidden" name="table_id" value="{{table_id}}">
-<button>Call Staff</button>
-</form>
-</div>
+    <div class="staff">
+
+    <form action="/call-staff" method="post">
+    
+    <input type="hidden" name="table_id" value="{{table_id}}">
+    <input type="hidden" name="name" value="{{name}}">
+    <input type="hidden" name="phone" value="{{phone}}">
+    
+    <button>
+    Call Staff
+    </button>
+    
+    </form>
+    
+    </div>
 
 <div class="bill">
 <a href="/bill-customer?table={{table_id}}&name={{name}}&phone={{phone}}">
@@ -309,6 +318,18 @@ body:`table_id={{table_id}}&customer_name={{name}}&customer_phone={{phone}}&item
 }
 
 </script>
+<script>
 
+    setTimeout(() => {
+    
+    let msg = document.querySelector(".staff-message")
+    
+    if(msg){
+    msg.style.display = "none"
+    }
+    
+    },4000)
+    
+    </script>
 </body>
 </html>

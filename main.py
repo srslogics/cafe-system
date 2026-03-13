@@ -21,6 +21,9 @@ cart = []
 # -------------------------------
 # CUSTOMER ENTRY
 # -------------------------------
+@app.get("/")
+def home():
+    return RedirectResponse("/table/1")
 
 @app.get("/table/{table_id}", response_class=HTMLResponse)
 def customer_details(request: Request, table_id: int):
