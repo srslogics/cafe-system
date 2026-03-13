@@ -6,7 +6,7 @@
     margin:0;
     font-family:"Segoe UI", Arial, sans-serif;
     background:linear-gradient(135deg,#f8f5f1,#efe7de);
-    padding-bottom:90px;
+    padding-bottom:110px;
     }
     
     /* HEADER */
@@ -32,13 +32,89 @@
     font-weight:500;
     }
     
-    /* MAIN CONTAINER */
+    /* CONTAINER */
     
     .container{
     max-width:420px;
     margin:auto;
     padding:20px;
-    padding-bottom:160px;
+    padding-bottom:120px;
+    }
+    
+    /* ORDER SUMMARY */
+    
+    .order-summary{
+    max-width:420px;
+    margin:auto;
+    
+    background:white;
+    
+    padding:12px 18px;
+    
+    border-radius:12px;
+    
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    
+    font-size:14px;
+    font-weight:500;
+    
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    
+    margin-bottom:14px;
+    }
+    
+    .table-label{
+    color:#6f4e37;
+    font-weight:600;
+    }
+    
+    .divider{
+    margin:0 6px;
+    color:#aaa;
+    }
+    
+    /* CATEGORY NAVIGATION */
+    
+    .menu-categories{
+    display:flex;
+    gap:10px;
+    
+    overflow-x:auto;
+    
+    padding:10px 0 15px 0;
+    
+    max-width:420px;
+    margin:auto;
+    }
+    
+    .menu-categories a{
+    text-decoration:none;
+    
+    background:white;
+    
+    padding:8px 16px;
+    
+    border-radius:20px;
+    
+    font-size:13px;
+    
+    color:#6f4e37;
+    
+    border:1px solid #eee;
+    
+    white-space:nowrap;
+    
+    box-shadow:0 4px 10px rgba(0,0,0,0.05);
+    }
+    
+    /* CATEGORY TITLE */
+    
+    .category-title{
+    margin:20px 0 10px 0;
+    color:#3b2d25;
+    font-size:18px;
     }
     
     /* MENU CARD */
@@ -71,7 +147,6 @@
     .item-info{
     display:flex;
     flex-direction:column;
-    justify-content:center;
     }
     
     .item-name{
@@ -141,97 +216,22 @@
     color:#3b2d25;
     }
     
-    /* STAFF BUTTON */
+    /* STAFF MESSAGE */
     
-    .staff{
-    margin-top:28px;
+    .staff-message{
+    background:#e9f8f1;
+    color:#1f6f52;
+    padding:12px;
+    margin:15px auto;
+    max-width:420px;
     text-align:center;
-    }
-    
-    .staff button{
-    background:linear-gradient(135deg,#6f4e37,#4a2f20);
-    border:none;
-    color:white;
-    padding:14px 26px;
     border-radius:12px;
-    font-size:15px;
-    font-weight:600;
-    cursor:pointer;
-    box-shadow:0 10px 25px rgba(0,0,0,0.15);
-    transition:0.2s;
+    font-size:14px;
+    
+    box-shadow:0 6px 18px rgba(0,0,0,0.05);
     }
     
-    .staff button:hover{
-    transform:translateY(-2px);
-    }
-    
-    /* BILL BUTTON */
-    
-    .bill{
-    margin-top:16px;
-    text-align:center;
-    }
-    
-    .bill button{
-    background:#3b2d25;
-    border:none;
-    color:white;
-    padding:14px 26px;
-    border-radius:12px;
-    font-size:15px;
-    font-weight:600;
-    cursor:pointer;
-    box-shadow:0 10px 25px rgba(0,0,0,0.15);
-    transition:0.2s;
-    }
-    
-    .bill button:hover{
-    transform:translateY(-2px);
-    }
-    .action-bar{
-        position:fixed;
-        
-        bottom:80px;   /* move it above the cart bar */
-        
-        left:0;
-        right:0;
-        
-        max-width:420px;
-        margin:auto;
-        
-        display:flex;
-        gap:12px;
-        
-        padding:12px 16px;
-        }
-        
-        
-        .action-bar form{
-        flex:1;
-        }
-        
-        .action-bar a{
-        flex:1;
-        }
-        
-        .action-bar button{
-        
-        width:100%;
-        
-        padding:14px;
-        
-        border:none;
-        
-        border-radius:12px;
-        
-        font-weight:600;
-        
-        cursor:pointer;
-        
-        }
-        
     /* CART BAR */
-    
     .cart-bar{
         position:fixed;
         bottom:0;
@@ -241,134 +241,61 @@
         background:linear-gradient(135deg,#6f4e37,#4a2f20);
         color:white;
         
-        padding:18px 20px;
+        padding:12px;
         
         display:flex;
-        justify-content:space-between;
-        align-items:center;
+        flex-direction:column;
+        gap:8px;
         
-        font-size:16px;
-        font-weight:500;
-        height:70px;
         box-shadow:0 -10px 30px rgba(0,0,0,0.2);
-        
         z-index:1000;
         }
         
-            .staff-btn{
-                background:white;
-                color:#4a2f20;
-                
-                border:2px solid #6f4e37;
-                
-                font-weight:600;
-                }
-                .staff-btn:hover{
-                    background:#f4eee8;
-                    }
-            
-            .bill-btn{
-            background:#3b2d25;
-            color:white;
+        .cart-info{
+        text-align:center;
+        font-size:14px;
+        font-weight:500;
+        }
+        
+        .cart-actions{
+            display:flex;
+            justify-content:center;
+            gap:10px;
+            width:100%;
             }
-
-    .cart-bar button{
+        
+        .cart-actions button{
+        flex:1;
+        max-width:140px;
+        padding:12px;
+        border-radius:10px;
+        font-weight:600;
+        border:none;
+        font-weight:600;
+        cursor:pointer;
+        }
+        
+    
+    /* SPECIFIC BUTTONS */
+    
+    .staff-btn{
     background:white;
     color:#4a2f20;
-    border:none;
-    padding:11px 18px;
-    border-radius:10px;
-    font-weight:600;
-    cursor:pointer;
+    border:2px solid #6f4e37;
     }
     
-    /* STAFF MESSAGE */
-    
-    .staff-message{
-    background:#e9f8f1;
-    color:#1f6f52;
-    padding:12px;
-    margin:15px auto;
-    max-width:520px;
-    text-align:center;
-    border-radius:12px;
-    font-size:14px;
-    
-    box-shadow:0 6px 18px rgba(0,0,0,0.05);
+    .staff-btn:hover{
+    background:#f4eee8;
     }
     
-    /* ORDER SUMMARY */
-    
-    .order-summary{
-    max-width:520px;
-    margin:auto;
-    
-    background:white;
-    
-    padding:12px 18px;
-    
-    border-radius:12px;
-    
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    
-    font-size:14px;
-    font-weight:500;
-    
-    box-shadow:0 8px 20px rgba(0,0,0,0.08);
-    
-    margin-bottom:14px;
+    .bill-btn{
+    background:#3b2d25;
+    color:white;
     }
     
-    .table-label{
-    color:#6f4e37;
-    font-weight:600;
-    }
-    
-    .divider{
-    margin:0 6px;
-    color:#aaa;
-    }
-    
-    /* CATEGORY NAVIGATION */
-    
-    .menu-categories{
-    display:flex;
-    gap:10px;
-    
-    overflow-x:auto;
-    
-    padding:10px 0 15px 0;
-    
-    max-width:520px;
-    margin:auto;
-    }
-    
-    .menu-categories a{
-    text-decoration:none;
-    
-    background:white;
-    
-    padding:8px 16px;
-    
-    border-radius:20px;
-    
-    font-size:13px;
-    
-    color:#6f4e37;
-    
-    border:1px solid #eee;
-    
-    white-space:nowrap;
-    
-    box-shadow:0 4px 10px rgba(0,0,0,0.05);
-    }
-    
-    .category-title{
-    margin:20px 0 10px 0;
+    .view-btn{
+    background:#f4eee8;
     color:#3b2d25;
-    font-size:18px;
     }
     
     /* MOBILE */
@@ -394,3 +321,4 @@
     }
     
     }
+    

@@ -61,7 +61,6 @@ Staff has been notified 👨‍🍳
 <h3 id="coffee" class="category-title">Coffee</h3>
 
 <div class="menu-card">
-
 <div class="item-info">
 <div class="item-name">☕ Cappuccino</div>
 <div class="price">₹180</div>
@@ -72,11 +71,9 @@ Staff has been notified 👨‍🍳
 <span class="qty" id="qty-Cappuccino">0</span>
 <button onclick="increase('Cappuccino')">+</button>
 </div>
-
 </div>
 
 <div class="menu-card">
-
 <div class="item-info">
 <div class="item-name">☕ Latte</div>
 <div class="price">₹200</div>
@@ -87,7 +84,6 @@ Staff has been notified 👨‍🍳
 <span class="qty" id="qty-Latte">0</span>
 <button onclick="increase('Latte')">+</button>
 </div>
-
 </div>
 
 <!-- FOOD -->
@@ -95,7 +91,6 @@ Staff has been notified 👨‍🍳
 <h3 id="food" class="category-title">Food</h3>
 
 <div class="menu-card">
-
 <div class="item-info">
 <div class="item-name">🥪 Paneer Sandwich</div>
 <div class="price">₹250</div>
@@ -106,11 +101,9 @@ Staff has been notified 👨‍🍳
 <span class="qty" id="qty-Paneer Sandwich">0</span>
 <button onclick="increase('Paneer Sandwich')">+</button>
 </div>
-
 </div>
 
 <div class="menu-card">
-
 <div class="item-info">
 <div class="item-name">🍝 Alfredo Pasta</div>
 <div class="price">₹320</div>
@@ -121,7 +114,6 @@ Staff has been notified 👨‍🍳
 <span class="qty" id="qty-Alfredo Pasta">0</span>
 <button onclick="increase('Alfredo Pasta')">+</button>
 </div>
-
 </div>
 
 <!-- DESSERT -->
@@ -129,7 +121,6 @@ Staff has been notified 👨‍🍳
 <h3 id="dessert" class="category-title">Dessert</h3>
 
 <div class="menu-card">
-
 <div class="item-info">
 <div class="item-name">🍰 Blueberry Cheesecake</div>
 <div class="price">₹280</div>
@@ -140,15 +131,19 @@ Staff has been notified 👨‍🍳
 <span class="qty" id="qty-Blueberry Cheesecake">0</span>
 <button onclick="increase('Blueberry Cheesecake')">+</button>
 </div>
-
 </div>
 
-<!-- ACTION BAR -->
+</div> <!-- END CONTAINER -->
 
-<div class="action-bar">
+<div class="cart-bar">
 
-    <form action="/call-staff" method="post">
+    <div class="cart-info">
+    <span id="cart-count">0 items</span>
+    </div>
     
+    <div class="cart-actions">
+    
+    <form action="/call-staff" method="post">
     <input type="hidden" name="table_id" value="{{table_id}}">
     <input type="hidden" name="name" value="{{name}}">
     <input type="hidden" name="phone" value="{{phone}}">
@@ -156,39 +151,33 @@ Staff has been notified 👨‍🍳
     <button class="staff-btn">
     Call Staff
     </button>
-    
     </form>
     
     <a href="/bill-customer?table={{table_id}}&name={{name}}&phone={{phone}}">
-    
     <button class="bill-btn">
     Generate Bill
     </button>
+    </a>
     
+    <a href="/cart?name={{name}}&phone={{phone}}&table={{table_id}}">
+    <button class="view-btn">
+    View Cart
+    </button>
     </a>
     
     </div>
-
-<div class="cart-bar">
-
-<span id="cart-count">0 items</span>
-
-<a href="/cart?name={{name}}&phone={{phone}}&table={{table_id}}">
-<button>View Cart</button>
-</a>
-
-</div>
+    
+    </div>
+    
 
 <script>
 
 let prices = {
-
 "Cappuccino":180,
 "Latte":200,
 "Paneer Sandwich":250,
 "Alfredo Pasta":320,
 "Blueberry Cheesecake":280
-
 }
 
 let cart = {}
@@ -231,9 +220,7 @@ totalPrice += cart[i] * prices[i]
 }
 
 document.getElementById("cart-count").innerText = totalItems + " items"
-
 document.getElementById("item-count").innerText = totalItems + " items"
-
 document.getElementById("total-price").innerText = "₹" + totalPrice
 
 }
