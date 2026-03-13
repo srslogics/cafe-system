@@ -142,8 +142,23 @@ def place_order():
 
     cart.clear()
 
-    return RedirectResponse("/kitchen", status_code=303)
+    return RedirectResponse(
+    f"/order-confirmed?table={item['table_id']}&name={item['name']}&phone={item['phone']}",
+    status_code=303
+                )
 
+@app.get("/order-confirmed", response_class=HTMLResponse)
+def order_confirmed(request: Request, table:int, name:str, phone:str):
+
+    return templates.TemplateResponse(
+        "order_confirmed.html",
+        {
+            "request": request,
+            "table": table,
+            "name": name,
+            "phone": phone
+        }
+    )
 # -------------------------------
 # CALL STAFF
 # -------------------------------

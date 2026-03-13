@@ -12,34 +12,36 @@
 
 body{
 margin:0;
-font-family: "Segoe UI", Arial, sans-serif;
+font-family:"Segoe UI", Arial, sans-serif;
 background:#f3f1ed;
 }
 
 .header{
 background:#6f4e37;
 color:white;
-padding:16px;
+padding:18px;
 text-align:center;
-font-size:20px;
+font-size:22px;
+font-weight:500;
 }
 
 .subheader{
 text-align:center;
 font-size:14px;
 color:#555;
-margin-top:5px;
+margin:8px 0 15px 0;
 }
 
 .container{
-max-width:500px;
+max-width:520px;
 margin:auto;
 padding:15px;
+padding-bottom:90px;
 }
 
 .menu-card{
 background:white;
-padding:15px;
+padding:16px;
 border-radius:10px;
 margin-bottom:12px;
 display:flex;
@@ -57,20 +59,30 @@ color:#333;
 .price{
 color:#777;
 font-size:14px;
+margin-top:3px;
 }
 
-button{
+.qty-box{
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+.qty-box button{
+width:30px;
+height:30px;
+border:none;
 background:#6f4e37;
 color:white;
-border:none;
-padding:10px 14px;
 border-radius:6px;
+font-size:16px;
 cursor:pointer;
-font-size:14px;
 }
 
-button:hover{
-background:#5c3f2c;
+.qty{
+font-size:15px;
+width:20px;
+text-align:center;
 }
 
 .staff{
@@ -80,23 +92,41 @@ text-align:center;
 
 .staff button{
 background:#ff6b35;
+padding:10px 18px;
 }
 
-.cart{
-text-align:center;
-margin-top:20px;
-}
-
-.cart button{
-background:#2d8f6f;
-}
 .bill{
-margin-top:12px;
+margin-top:10px;
 text-align:center;
 }
 
-.bill-btn{
+.bill button{
 background:#2d8f6f;
+padding:10px 18px;
+}
+
+.cart-bar{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+background:#2d8f6f;
+color:white;
+padding:14px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-size:16px;
+}
+
+.cart-bar button{
+background:white;
+color:#2d8f6f;
+border:none;
+padding:8px 16px;
+border-radius:6px;
+font-weight:600;
+cursor:pointer;
 }
 
 </style>
@@ -116,150 +146,152 @@ Table {{table_id}} • Welcome {{name}}
 <div class="container">
 
 <!-- Cappuccino -->
-
 <div class="menu-card">
-
 <div>
 <div class="item-name">☕ Cappuccino</div>
 <div class="price">₹180</div>
 </div>
 
-<form action="/add-to-cart" method="post">
-
-<input type="hidden" name="table_id" value="{{table_id}}">
-<input type="hidden" name="customer_name" value="{{name}}">
-<input type="hidden" name="customer_phone" value="{{phone}}">
-<input type="hidden" name="item" value="Cappuccino">
-
-<button>Add</button>
-
-</form>
-
+<div class="qty-box">
+<button onclick="decrease('Cappuccino')">-</button>
+<span class="qty" id="qty-Cappuccino">0</span>
+<button onclick="increase('Cappuccino')">+</button>
+</div>
 </div>
 
 <!-- Latte -->
-
 <div class="menu-card">
-
 <div>
 <div class="item-name">☕ Latte</div>
 <div class="price">₹200</div>
 </div>
 
-<form action="/add-to-cart" method="post">
-
-<input type="hidden" name="table_id" value="{{table_id}}">
-<input type="hidden" name="customer_name" value="{{name}}">
-<input type="hidden" name="customer_phone" value="{{phone}}">
-<input type="hidden" name="item" value="Latte">
-
-<button>Add</button>
-
-</form>
-
+<div class="qty-box">
+<button onclick="decrease('Latte')">-</button>
+<span class="qty" id="qty-Latte">0</span>
+<button onclick="increase('Latte')">+</button>
+</div>
 </div>
 
 <!-- Sandwich -->
-
 <div class="menu-card">
-
 <div>
 <div class="item-name">🥪 Paneer Sandwich</div>
 <div class="price">₹250</div>
 </div>
 
-<form action="/add-to-cart" method="post">
-
-<input type="hidden" name="table_id" value="{{table_id}}">
-<input type="hidden" name="customer_name" value="{{name}}">
-<input type="hidden" name="customer_phone" value="{{phone}}">
-<input type="hidden" name="item" value="Paneer Sandwich">
-
-<button>Add</button>
-
-</form>
-
+<div class="qty-box">
+<button onclick="decrease('Paneer Sandwich')">-</button>
+<span class="qty" id="qty-Paneer Sandwich">0</span>
+<button onclick="increase('Paneer Sandwich')">+</button>
+</div>
 </div>
 
 <!-- Pasta -->
-
 <div class="menu-card">
-
 <div>
 <div class="item-name">🍝 Alfredo Pasta</div>
 <div class="price">₹320</div>
 </div>
 
-<form action="/add-to-cart" method="post">
-
-<input type="hidden" name="table_id" value="{{table_id}}">
-<input type="hidden" name="customer_name" value="{{name}}">
-<input type="hidden" name="customer_phone" value="{{phone}}">
-<input type="hidden" name="item" value="Alfredo Pasta">
-
-<button>Add</button>
-
-</form>
-
+<div class="qty-box">
+<button onclick="decrease('Alfredo Pasta')">-</button>
+<span class="qty" id="qty-Alfredo Pasta">0</span>
+<button onclick="increase('Alfredo Pasta')">+</button>
+</div>
 </div>
 
 <!-- Cheesecake -->
-
 <div class="menu-card">
-
 <div>
 <div class="item-name">🍰 Blueberry Cheesecake</div>
 <div class="price">₹280</div>
 </div>
 
-<form action="/add-to-cart" method="post">
+<div class="qty-box">
+<button onclick="decrease('Blueberry Cheesecake')">-</button>
+<span class="qty" id="qty-Blueberry Cheesecake">0</span>
+<button onclick="increase('Blueberry Cheesecake')">+</button>
+</div>
+</div>
 
+<div class="staff">
+<form action="/call-staff" method="post">
 <input type="hidden" name="table_id" value="{{table_id}}">
-<input type="hidden" name="customer_name" value="{{name}}">
-<input type="hidden" name="customer_phone" value="{{phone}}">
-<input type="hidden" name="item" value="Blueberry Cheesecake">
-
-<button>Add</button>
-
+<button>Call Staff</button>
 </form>
+</div>
+
+<div class="bill">
+<a href="/bill-customer?table={{table_id}}&name={{name}}&phone={{phone}}">
+<button>Generate Bill</button>
+</a>
+</div>
 
 </div>
 
-<!-- View Cart -->
-
-<div class="cart">
+<div class="cart-bar">
+<span id="cart-count">0 items</span>
 
 <a href="/cart?name={{name}}&phone={{phone}}&table={{table_id}}">
 <button>View Cart</button>
 </a>
-
 </div>
 
-<!-- Call Staff -->
+<script>
 
-<div class="staff">
+let cart = {}
 
-<form action="/call-staff" method="post">
+function increase(item){
 
-<input type="hidden" name="table_id" value="{{table_id}}">
+if(!cart[item]){
+cart[item] = 0
+}
 
-<button>
-Call Staff
-</button>
+cart[item]++
 
-</form>
+updateUI(item)
 
-</div>
-<div class="bill">
+sendToServer(item)
 
-    <a href="/bill-customer?table={{table_id}}&name={{name}}&phone={{phone}}">
-    <button class="bill-btn">
-    Generate Bill
-    </button>
-    </a>
-    
-    </div>
-</div>
+}
+
+function decrease(item){
+
+if(cart[item] && cart[item] > 0){
+cart[item]--
+updateUI(item)
+}
+
+}
+
+function updateUI(item){
+
+document.getElementById("qty-"+item).innerText = cart[item]
+
+let total = 0
+
+for(let i in cart){
+total += cart[i]
+}
+
+document.getElementById("cart-count").innerText = total + " items"
+
+}
+
+function sendToServer(item){
+
+fetch("/add-to-cart",{
+method:"POST",
+headers:{
+"Content-Type":"application/x-www-form-urlencoded"
+},
+body:`table_id={{table_id}}&customer_name={{name}}&customer_phone={{phone}}&item=${item}`
+})
+
+}
+
+</script>
 
 </body>
 </html>
