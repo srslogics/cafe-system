@@ -38,7 +38,7 @@
     max-width:420px;
     margin:auto;
     padding:20px;
-    padding-bottom:40px;
+    padding-bottom:160px;
     }
     
     /* MENU CARD */
@@ -188,7 +188,48 @@
     .bill button:hover{
     transform:translateY(-2px);
     }
-    
+    .action-bar{
+        position:fixed;
+        
+        bottom:80px;   /* move it above the cart bar */
+        
+        left:0;
+        right:0;
+        
+        max-width:420px;
+        margin:auto;
+        
+        display:flex;
+        gap:12px;
+        
+        padding:12px 16px;
+        }
+        
+        
+        .action-bar form{
+        flex:1;
+        }
+        
+        .action-bar a{
+        flex:1;
+        }
+        
+        .action-bar button{
+        
+        width:100%;
+        
+        padding:14px;
+        
+        border:none;
+        
+        border-radius:12px;
+        
+        font-weight:600;
+        
+        cursor:pointer;
+        
+        }
+        
     /* CART BAR */
     
     .cart-bar{
@@ -208,54 +249,12 @@
         
         font-size:16px;
         font-weight:500;
-        
+        height:70px;
         box-shadow:0 -10px 30px rgba(0,0,0,0.2);
         
         z-index:1000;
         }
-        .action-bar{
-
-            position:fixed;
-            
-            bottom:70px;
-            
-            left:0;
-            right:0;
-            
-            max-width:420px;
-            margin:auto;
-            
-            display:flex;
-            gap:12px;
-            
-            padding:12px 16px;
-            
-            }
-            
-            .action-bar form{
-            flex:1;
-            }
-            
-            .action-bar a{
-            flex:1;
-            }
-            
-            .action-bar button{
-            
-            width:100%;
-            
-            padding:14px;
-            
-            border:none;
-            
-            border-radius:12px;
-            
-            font-weight:600;
-            
-            cursor:pointer;
-            
-            }
-            
+        
             .staff-btn{
                 background:white;
                 color:#4a2f20;
