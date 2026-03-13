@@ -133,12 +133,12 @@ Table {{table_id}}
 </div>
 
 <div class="customer">
-Customer: {{table.customer}}
+Customer: {{table["customer"]}}
 </div>
 
 <div class="items">
 
-{% for item in table.items %}
+{% for item in table["items"] %}
 
 <div class="item">
 • {{item}}
@@ -155,7 +155,7 @@ Customer: {{table.customer}}
 {% endif %}
 ">
 
-Status: {{table.status}}
+Status: {{table["status"]}}
 
 </div>
 
