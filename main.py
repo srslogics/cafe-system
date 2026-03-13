@@ -1,18 +1,19 @@
 from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
 from database import engine, SessionLocal
 from models import Base, Order
 import uvicorn
 import os
 
-# -------------------------------
-# DATABASE
-# -------------------------------
-
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
+
+# Serve CSS / JS files
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
 templates = Jinja2Templates(directory="templates")
 
 # -------------------------------
