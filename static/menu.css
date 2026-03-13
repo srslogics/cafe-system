@@ -6,6 +6,7 @@
     margin:0;
     font-family:"Segoe UI", Arial, sans-serif;
     background:linear-gradient(135deg,#f8f5f1,#efe7de);
+    padding-bottom:90px;
     }
     
     /* HEADER */
@@ -37,7 +38,7 @@
     max-width:420px;
     margin:auto;
     padding:20px;
-    padding-bottom:180px;
+    padding-bottom:40px;
     }
     
     /* MENU CARD */
@@ -191,26 +192,87 @@
     /* CART BAR */
     
     .cart-bar{
-    position:fixed;
-    bottom:0;
-    left:0;
-    right:0;
-    padding-bottom:env(safe-area-inset-bottom);
-    background:linear-gradient(135deg,#6f4e37,#4a2f20);
-    color:white;
-    
-    padding:18px 20px;
-    
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    
-    font-size:16px;
-    font-weight:500;
-    
-    box-shadow:0 -10px 30px rgba(0,0,0,0.2);
-    }
-    
+        position:fixed;
+        bottom:0;
+        left:0;
+        right:0;
+        
+        background:linear-gradient(135deg,#6f4e37,#4a2f20);
+        color:white;
+        
+        padding:18px 20px;
+        
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        
+        font-size:16px;
+        font-weight:500;
+        
+        box-shadow:0 -10px 30px rgba(0,0,0,0.2);
+        
+        z-index:1000;
+        }
+        .action-bar{
+
+            position:fixed;
+            
+            bottom:70px;
+            
+            left:0;
+            right:0;
+            
+            max-width:420px;
+            margin:auto;
+            
+            display:flex;
+            gap:12px;
+            
+            padding:12px 16px;
+            
+            }
+            
+            .action-bar form{
+            flex:1;
+            }
+            
+            .action-bar a{
+            flex:1;
+            }
+            
+            .action-bar button{
+            
+            width:100%;
+            
+            padding:14px;
+            
+            border:none;
+            
+            border-radius:12px;
+            
+            font-weight:600;
+            
+            cursor:pointer;
+            
+            }
+            
+            .staff-btn{
+                background:white;
+                color:#4a2f20;
+                
+                border:2px solid #6f4e37;
+                
+                font-weight:600;
+                }
+                .staff-btn:hover{
+                    background:#f4eee8;
+                    }
+            
+            .bill-btn{
+            background:#3b2d25;
+            color:white;
+            }
+
     .cart-bar button{
     background:white;
     color:#4a2f20;

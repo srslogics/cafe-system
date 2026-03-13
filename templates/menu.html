@@ -143,35 +143,31 @@ Staff has been notified 👨‍🍳
 
 </div>
 
-<!-- STAFF CALL -->
+<!-- ACTION BAR -->
 
-<div class="staff">
+<div class="action-bar">
 
-<form action="/call-staff" method="post">
-
-<input type="hidden" name="table_id" value="{{table_id}}">
-<input type="hidden" name="name" value="{{name}}">
-<input type="hidden" name="phone" value="{{phone}}">
-
-<button>
-Call Staff
-</button>
-
-</form>
-
-</div>
-
-<!-- BILL -->
-
-<div class="bill">
-
-<a href="/bill-customer?table={{table_id}}&name={{name}}&phone={{phone}}">
-<button>Generate Bill</button>
-</a>
-
-</div>
-
-</div>
+    <form action="/call-staff" method="post">
+    
+    <input type="hidden" name="table_id" value="{{table_id}}">
+    <input type="hidden" name="name" value="{{name}}">
+    <input type="hidden" name="phone" value="{{phone}}">
+    
+    <button class="staff-btn">
+    Call Staff
+    </button>
+    
+    </form>
+    
+    <a href="/bill-customer?table={{table_id}}&name={{name}}&phone={{phone}}">
+    
+    <button class="bill-btn">
+    Generate Bill
+    </button>
+    
+    </a>
+    
+    </div>
 
 <div class="cart-bar">
 
