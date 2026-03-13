@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Three Beans Menu</title>
+
+<style>
+
+body{
+margin:0;
+font-family: "Segoe UI", Arial, sans-serif;
+background:#f3f1ed;
+}
+
+.header{
+background:#6f4e37;
+color:white;
+padding:16px;
+text-align:center;
+font-size:20px;
+}
+
+.subheader{
+text-align:center;
+font-size:14px;
+color:#555;
+margin-top:5px;
+}
+
+.container{
+max-width:500px;
+margin:auto;
+padding:15px;
+}
+
+.menu-card{
+background:white;
+padding:15px;
+border-radius:10px;
+margin-bottom:12px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 3px 10px rgba(0,0,0,0.05);
+}
+
+.item-name{
+font-size:16px;
+font-weight:500;
+color:#333;
+}
+
+.price{
+color:#777;
+font-size:14px;
+}
+
+button{
+background:#6f4e37;
+color:white;
+border:none;
+padding:10px 14px;
+border-radius:6px;
+cursor:pointer;
+font-size:14px;
+}
+
+button:hover{
+background:#5c3f2c;
+}
+
+.staff{
+margin-top:20px;
+text-align:center;
+}
+
+.staff button{
+background:#ff6b35;
+}
+
+.cart{
+text-align:center;
+margin-top:20px;
+}
+
+.cart button{
+background:#2d8f6f;
+}
+.bill{
+margin-top:12px;
+text-align:center;
+}
+
+.bill-btn{
+background:#2d8f6f;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+Three Beans
+</div>
+
+<div class="subheader">
+Table {{table_id}} • Welcome {{name}}
+</div>
+
+<div class="container">
+
+<!-- Cappuccino -->
+
+<div class="menu-card">
+
+<div>
+<div class="item-name">☕ Cappuccino</div>
+<div class="price">₹180</div>
+</div>
+
+<form action="/add-to-cart" method="post">
+
+<input type="hidden" name="table_id" value="{{table_id}}">
+<input type="hidden" name="customer_name" value="{{name}}">
+<input type="hidden" name="customer_phone" value="{{phone}}">
+<input type="hidden" name="item" value="Cappuccino">
+
+<button>Add</button>
+
+</form>
+
+</div>
+
+<!-- Latte -->
+
+<div class="menu-card">
+
+<div>
+<div class="item-name">☕ Latte</div>
+<div class="price">₹200</div>
+</div>
+
+<form action="/add-to-cart" method="post">
+
+<input type="hidden" name="table_id" value="{{table_id}}">
+<input type="hidden" name="customer_name" value="{{name}}">
+<input type="hidden" name="customer_phone" value="{{phone}}">
+<input type="hidden" name="item" value="Latte">
+
+<button>Add</button>
+
+</form>
+
+</div>
+
+<!-- Sandwich -->
+
+<div class="menu-card">
+
+<div>
+<div class="item-name">🥪 Paneer Sandwich</div>
+<div class="price">₹250</div>
+</div>
+
+<form action="/add-to-cart" method="post">
+
+<input type="hidden" name="table_id" value="{{table_id}}">
+<input type="hidden" name="customer_name" value="{{name}}">
+<input type="hidden" name="customer_phone" value="{{phone}}">
+<input type="hidden" name="item" value="Paneer Sandwich">
+
+<button>Add</button>
+
+</form>
+
+</div>
+
+<!-- Pasta -->
+
+<div class="menu-card">
+
+<div>
+<div class="item-name">🍝 Alfredo Pasta</div>
+<div class="price">₹320</div>
+</div>
+
+<form action="/add-to-cart" method="post">
+
+<input type="hidden" name="table_id" value="{{table_id}}">
+<input type="hidden" name="customer_name" value="{{name}}">
+<input type="hidden" name="customer_phone" value="{{phone}}">
+<input type="hidden" name="item" value="Alfredo Pasta">
+
+<button>Add</button>
+
+</form>
+
+</div>
+
+<!-- Cheesecake -->
+
+<div class="menu-card">
+
+<div>
+<div class="item-name">🍰 Blueberry Cheesecake</div>
+<div class="price">₹280</div>
+</div>
+
+<form action="/add-to-cart" method="post">
+
+<input type="hidden" name="table_id" value="{{table_id}}">
+<input type="hidden" name="customer_name" value="{{name}}">
+<input type="hidden" name="customer_phone" value="{{phone}}">
+<input type="hidden" name="item" value="Blueberry Cheesecake">
+
+<button>Add</button>
+
+</form>
+
+</div>
+
+<!-- View Cart -->
+
+<div class="cart">
+
+<a href="/cart?name={{name}}&phone={{phone}}&table={{table_id}}">
+<button>View Cart</button>
+</a>
+
+</div>
+
+<!-- Call Staff -->
+
+<div class="staff">
+
+<form action="/call-staff" method="post">
+
+<input type="hidden" name="table_id" value="{{table_id}}">
+
+<button>
+Call Staff
+</button>
+
+</form>
+
+</div>
+<div class="bill">
+
+    <a href="/bill-customer?table={{table_id}}&name={{name}}&phone={{phone}}">
+    <button class="bill-btn">
+    Generate Bill
+    </button>
+    </a>
+    
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Staff Dashboard</title>
+
+<style>
+
+body{
+margin:0;
+font-family:"Segoe UI", Arial, sans-serif;
+background:#f3f1ed;
+}
+
+.header{
+background:#6f4e37;
+color:white;
+padding:18px;
+text-align:center;
+font-size:22px;
+}
+
+.container{
+max-width:800px;
+margin:auto;
+padding:20px;
+}
+
+.order-card{
+background:white;
+padding:18px;
+border-radius:12px;
+margin-bottom:12px;
+box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+.table{
+font-size:20px;
+font-weight:bold;
+}
+
+.customer{
+color:#777;
+font-size:14px;
+margin-bottom:8px;
+}
+
+.item{
+margin:6px 0;
+}
+
+.actions{
+margin-top:10px;
+}
+
+button{
+border:none;
+padding:10px 14px;
+border-radius:6px;
+cursor:pointer;
+margin-right:8px;
+}
+
+.bill-btn{
+background:#28a745;
+color:white;
+}
+
+.ready-btn{
+background:#ff6b35;
+color:white;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+Staff Dashboard
+</div>
+
+<div class="container">
+
+{% for order in orders %}
+
+<div class="order-card">
+
+<div class="table">
+Table {{order.table_id}}
+</div>
+
+<div class="customer">
+Customer: {{order.customer_name}}
+</div>
+
+<div class="item">
+Item: {{order.item}}
+</div>
+
+<div class="actions">
+
+<a href="/bill/{{order.id}}">
+<button class="bill-btn">
+Generate Bill
+</button>
+</a>
+
+<form action="/ready/{{order.id}}" method="post" style="display:inline">
+
+<button class="ready-btn">
+Mark Ready
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</body>
+
+</html>

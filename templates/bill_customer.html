@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Your Bill</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f3f1ed;
+}
+
+.container{
+max-width:450px;
+margin:auto;
+background:white;
+padding:20px;
+margin-top:40px;
+border-radius:10px;
+}
+
+.item{
+display:flex;
+justify-content:space-between;
+margin-bottom:10px;
+}
+
+.total{
+margin-top:15px;
+font-weight:bold;
+display:flex;
+justify-content:space-between;
+}
+
+button{
+width:100%;
+padding:14px;
+background:#6f4e37;
+color:white;
+border:none;
+border-radius:8px;
+margin-top:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Your Bill</h2>
+
+Table {{table}}
+
+<br><br>
+
+{% for item in items %}
+
+<div class="item">
+
+<span>{{item.name}}</span>
+
+<span>₹{{item.price}}</span>
+
+</div>
+
+{% endfor %}
+
+<div class="total">
+
+<span>Total</span>
+
+<span>₹{{total}}</span>
+
+</div>
+
+<form action="/pay" method="post">
+
+<button>
+Pay Now
+</button>
+
+</form>
+
+</div>
+
+</body>
+
+</html>
