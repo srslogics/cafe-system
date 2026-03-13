@@ -120,32 +120,42 @@ def cart_page(request: Request, name: str, phone: str, table: int):
 # -------------------------------
 # PLACE ORDER
 # -------------------------------
-
 @app.post("/place-order")
 def place_order():
 
+    if not cart:
+        return RedirectResponse("/", status_code=303)
+
+    table_id = cart[0]["table_id"]
+    name = cart[0]["name"]
+    phone = cart[0]["phone"]
+
     db = SessionLocal()
 
-    for item in cart:
+    try:
+        for item in cart:
 
-        order = Order(
-            table_id=item["table_id"],
-            customer_name=item["name"],
-            customer_phone=item["phone"],
-            item=item["item"],
-            status="NEW"
-        )
+            order = Order(
+                table_id=item["table_id"],
+                customer_name=item["name"],
+                customer_phone=item["phone"],
+                item=item["item"],
+                status="NEW"
+            )
 
-        db.add(order)
+            db.add(order)
 
-    db.commit()
+        db.commit()
+
+    finally:
+        db.close()
 
     cart.clear()
 
     return RedirectResponse(
-    f"/order-confirmed?table={item['table_id']}&name={item['name']}&phone={item['phone']}",
-    status_code=303
-                )
+        f"/order-confirmed?table={table_id}&name={name}&phone={phone}",
+        status_code=303
+    )
 
 @app.get("/order-confirmed", response_class=HTMLResponse)
 def order_confirmed(request: Request, table:int, name:str, phone:str):
@@ -173,44 +183,49 @@ def call_staff(table_id: int = Form(...)):
 # -------------------------------
 # KITCHEN DASHBOARD
 # -------------------------------
-
 @app.get("/kitchen", response_class=HTMLResponse)
 def kitchen(request: Request):
 
     db = SessionLocal()
-    orders = db.query(Order).all()
+
+    try:
+        orders = db.query(Order).all()
+    finally:
+        db.close()
 
     tables = {}
 
     for order in orders:
-        table_id = order.table_id
 
-        if table_id not in tables:
-            tables[table_id] = {
+        if order.table_id not in tables:
+            tables[order.table_id] = {
                 "customer": order.customer_name,
                 "items": [],
                 "status": order.status
             }
 
-        tables[table_id]["items"].append(order.item)
+        tables[order.table_id]["items"].append(order.item)
 
     return templates.TemplateResponse(
-    "kitchen.html",
-    {
-        "request": request,
-        "tables": tables
-    }
-)
+        "kitchen.html",
+        {
+            "request": request,
+            "tables": tables
+        }
+    )
 
 # -------------------------------
 # STAFF DASHBOARD
 # -------------------------------
-
 @app.get("/staff", response_class=HTMLResponse)
 def staff(request: Request):
 
     db = SessionLocal()
-    orders = db.query(Order).all()
+
+    try:
+        orders = db.query(Order).all()
+    finally:
+        db.close()
 
     return templates.TemplateResponse(
         "staff.html",
@@ -220,12 +235,15 @@ def staff(request: Request):
 # -------------------------------
 # STAFF BILL
 # -------------------------------
-
 @app.get("/bill/{order_id}", response_class=HTMLResponse)
 def bill(request: Request, order_id: int):
 
     db = SessionLocal()
-    order = db.query(Order).filter(Order.id == order_id).first()
+
+    try:
+        order = db.query(Order).filter(Order.id == order_id).first()
+    finally:
+        db.close()
 
     return templates.TemplateResponse(
         "bill.html",
@@ -241,7 +259,10 @@ def customer_bill(request: Request, table: int, name: str, phone: str):
 
     db = SessionLocal()
 
-    orders = db.query(Order).filter(Order.table_id == table).all()
+    try:
+        orders = db.query(Order).filter(Order.table_id == table).all()
+    finally:
+        db.close()
 
     prices = {
         "Cappuccino": 180,
