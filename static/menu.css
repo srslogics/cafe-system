@@ -37,7 +37,7 @@
     max-width:420px;
     margin:auto;
     padding:20px;
-    padding-bottom:110px;
+    padding-bottom:180px;
     }
     
     /* MENU CARD */
@@ -195,7 +195,7 @@
     bottom:0;
     left:0;
     right:0;
-    
+    padding-bottom:env(safe-area-inset-bottom);
     background:linear-gradient(135deg,#6f4e37,#4a2f20);
     color:white;
     
