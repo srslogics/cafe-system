@@ -303,7 +303,10 @@ def customer_bill(request: Request, table: int, name: str, phone: str):
     db = SessionLocal()
 
     try:
-        orders = db.query(Order).filter(Order.table_id == table).all()
+        orders = db.query(Order).filter(
+            Order.table_id == table,
+            Order.status == "NEW"
+        ).all()
     finally:
         db.close()
 
@@ -332,14 +335,32 @@ def customer_bill(request: Request, table: int, name: str, phone: str):
         }
     )
 
+
 # -------------------------------
 # PAYMENT
 # -------------------------------
 
 @app.post("/pay")
-def pay():
+def pay(table: int = Form(...)):
+
+    db = SessionLocal()
+
+    try:
+        orders = db.query(Order).filter(
+            Order.table_id == table,
+            Order.status == "NEW"
+        ).all()
+
+        for order in orders:
+            order.status = "PAID"
+
+        db.commit()
+
+    finally:
+        db.close()
 
     return RedirectResponse("/feedback", status_code=303)
+
 
 # -------------------------------
 # FEEDBACK
